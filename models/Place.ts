@@ -1,17 +1,13 @@
-import mongoose, { Schema, model, models } from "mongoose";
+import mongoose, { Schema, models, model } from "mongoose";
 
-const PlaceSchema = new Schema(
-  {
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    price: { type: Number, required: true },
-    location: { type: String, required: true },
-    image: { type: String, required: true }, // Just one simple URL string
-    duration: { type: String, default: "3 Days" },
-  },
-  { timestamps: true }
-);
+const PlaceSchema = new Schema({
+  name: String,
+  location: String,
+  image: String,
+  images: [String],
+  price: Number,
+  rating: Number,
+  category: String,
+});
 
-const Place = models.Place || model("Place", PlaceSchema);
-
-export default Place;
+export default models.Place || model("Place", PlaceSchema);
